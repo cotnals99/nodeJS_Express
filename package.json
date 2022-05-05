@@ -8,7 +8,10 @@
     "express-handlebars": "^3.1.0"
   },
   "devDependencies": {
+    "cat-names": "^3.0.0",
+    "cookie-parser": "^1.4.6",
     "eslint": "^5.16.0",
+    "express-session": "^1.17.2",
     "jest": "^25.5.4",
     "portfinder": "^1.0.28",
     "puppeteer": "^1.20.0"
