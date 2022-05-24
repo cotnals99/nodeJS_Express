@@ -3,9 +3,12 @@ const expressHandlebars = require('express-handlebars')
 const weatherMiddlware = require('./lib/middleware/weather')
 const bodyParser = require('body-parser')
 const multiparty = require('multiparty')
+const cookieParser = require('cookie-parser')
+const expressSession = require('express-session')
 
 const app = express()
 
+const credentials = require('./credentials')
 const handlers = require('./lib/handlers')
 // const fortune = require('./lib/fortunes')
 
@@ -27,6 +30,14 @@ app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
 
 const port = process.env.PORT || 3000
+
+app.use(cookieParser(credentials.cookieParser))
+app.use(expressSession({
+  resave: false,
+  saveUninitialized: false,
+  secret: credentials.cookieSecret,
+}))
+
 
 
 app.use(weatherMiddlware)
